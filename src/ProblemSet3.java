@@ -136,13 +136,13 @@ final double F = 0.00;
 
 
 System.out.print("\nEnter a letter grade: ");
-
+boolean tf;
     }
 
     /*
      * Exercise 5.
      *
-     * Prompt the user to enter a grade. What's the corresponding letter grade?
+     * Prompt the user to enter a grade. What's the canvcorresponding letter grade?
      */
 
     public void grade() {
