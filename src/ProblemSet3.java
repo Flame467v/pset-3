@@ -88,6 +88,7 @@ public class ProblemSet3 {
      */
 
     public void ordered() {
+
       System.out.print("\nEnter three integers.\n");
         System.out.print("\nEnter integer: ");
           int number1 = in.nextInt();
@@ -128,15 +129,66 @@ public class ProblemSet3 {
 
     public void gpa() {
 
-final double A = 4.00;
-final double B = 3.00;
-final double C = 2.00;
-final double D = 1.00;
-final double F = 0.00;
+      final double GPA_A = 4.00;
+      final double GPA_B = 3.00;
+      final double GPA_C = 2.00;
+      final double GPA_D = 1.00;
+      final double GPA_F = 0.00;
+      final double fracdif = 0.33;
+
+      String op = "";
+      double gpa = 0.00;
+
+      System.out.print("\nEnter a letter grade: ");
+      String gpaLetter = in.nextLine();
+      gpaLetter = gpaLetter.trim();
+      gpaLetter = gpaLetter.toUpperCase();
+      String letter2 = gpaLetter.substring(0, 1);
 
 
-System.out.print("\nEnter a letter grade: ");
-boolean tf;
+      if(gpaLetter.length() == 2) {
+        op = gpaLetter.substring(1, 2);
+      }
+      if(gpaLetter.length() <= 2 && gpaLetter.length() > 0 && (letter2.equals("A") || letter2.equals("B") || letter2.equals("C") || letter2.equals("D") ||
+      letter2.equals("F")) && (op.equals("") || op.equals("+") || op.equals("-")) && !gpaLetter.equals("F+") && !gpaLetter.equals("F-")) {
+
+
+        if(op.equals("+")) {
+          gpa += fracdif;
+        }
+        else if(op.equals("-")) {
+          gpa -= fracdif;
+        }
+
+        if(letter2.equals("A")) {
+          gpa += GPA_A;
+
+          if(gpa > 0) {
+            gpa -= fracdif;
+          }
+        }
+        else if(letter2.equals("B")) {
+          gpa += GPA_B;
+        }
+        else if(letter2.equals("C")) {
+          gpa += GPA_C;
+        }
+        else if(letter2.equals("D")) {
+          gpa += GPA_D;
+        }
+        else if(letter2.equals("F")) {
+          gpa += GPA_F;
+
+          if(gpa < 0) {
+            gpa += fracdif;
+          }
+        }
+        System.out.printf("\nYour GPA is %.2f.\n", gpa);
+      }
+
+      else {
+        System.out.println("\nThat's not a valid letter grade.");
+      }
     }
 
     /*
@@ -147,6 +199,53 @@ boolean tf;
 
     public void grade() {
 
+      final double GRADEA = 100;
+      final double ALOW = 90;
+      final double GRADEB = 89;
+      final double BLOW = 80;
+      final double GRADEC = 79;
+      final double CLOW = 70;
+      final double GRADED = 69;
+      final double DLOW = 60;
+      final double GRADEF = 59;
+      final double FLOW = 0;
+      char lettorgrade = 'p';
+      String aan = "";
+
+      System.out.print("\nEnter a grade: ");
+      double numberGrade = in.nextDouble();
+
+      if(numberGrade >= FLOW && numberGrade <= GRADEA) {
+
+        if(numberGrade >= ALOW && numberGrade <= GRADEA) {
+          lettorgrade = 'A';
+          aan = "an";
+        }
+        else if(numberGrade >= BLOW && numberGrade <= GRADEB) {
+          lettorgrade = 'B';
+          aan = "a";
+        }
+        else if(numberGrade >= CLOW && numberGrade <= GRADEC) {
+          lettorgrade = 'C';
+          aan = "a";
+        }
+        else if(numberGrade >= DLOW && numberGrade <= GRADED) {
+          lettorgrade = 'D';
+          aan = "a";
+        }
+        else if(numberGrade >= FLOW && numberGrade <= GRADEF) {
+          lettorgrade = 'F';
+          aan = "an";
+        }
+        System.out.printf("\nYou received " + aan + " " + lettorgrade +  ".\n");
+      }
+
+      else if(numberGrade < FLOW) {
+        System.out.println("\nGrades below 0 are invalid.");
+      }
+      else if(numberGrade > 100) {
+        System.out.println("\nGrades above 100 are invalid.");
+      }
     }
 
     /*
@@ -157,7 +256,95 @@ boolean tf;
 
     public void cards() {
 
-    }
+      String finalrank = "";
+      String finalsuit = "";
+
+      System.out.print("\nEnter a card: ");
+      String useri = in.nextLine();
+      String rank = useri.substring(0, 1).toUpperCase();
+      String suit = useri.substring(1, 2).toUpperCase();
+
+
+
+      if(useri.length() == 2 && (rank.equals("2") || rank.equals("3") || rank.equals("4") || rank.equals("5") || rank.equals("6") || rank.equals("7") ||
+       rank.equals("8") || rank.equals("9") || rank.equals("T") || rank.equals("J") || rank.equals("Q") || rank.equals("K") || rank.equals("A")) && (suit.equals("C") ||
+       suit.equals("H") || suit.equals("D") || suit.equals("S"))) {
+
+        if (rank.equals("2")) {
+          finalrank = "Two";
+        }
+        else if (rank.equals("3")) {
+          finalrank = "Three";
+        }
+        else if (rank.equals("4")) {
+          finalrank = "Four";
+        }
+        else if (rank.equals("5")) {
+          finalrank = "Five";
+        }
+        else if (rank.equals("6")) {
+          finalrank = "Six";
+        }
+        else if (rank.equals("7")) {
+          finalrank = "Seven";
+        }
+        else if (rank.equals("8")) {
+          finalrank = "Eight";
+        }
+        else if (rank.equals("9")) {
+          finalrank = "Nine";
+        }
+        else if (rank.equals("T")) {
+          finalrank = "Ten";
+        }
+        else if (rank.equals("J")) {
+          finalrank = "Jack";
+        }
+        else if (rank.equals("Q")) {
+          finalrank = "Queen";
+        }
+        else if (rank.equals("K")) {
+          finalrank = "King";
+        }
+        else if (rank.equals("A")) {
+          finalrank = "Ace";
+        }
+
+
+        if (suit.equals("C")) {
+          finalsuit = "Clubs";
+        }
+        else if (suit.equals("D")) {
+          finalsuit = "Diamonds";
+        }
+        else if (suit.equals("H")) {
+          finalsuit = "Hearts";
+        }
+        else if (suit.equals("S")) {
+          finalsuit = "Spades";
+        }
+
+
+        System.out.println("\n" + finalrank + " of " + finalsuit + ".");
+      }
+
+      else if(useri.length() != 2) {
+        System.out.println("\nThat's not a valid card.");
+      }
+      else if(!(rank.equals("2") || rank.equals("3") || rank.equals("4") || rank.equals("5") || rank.equals("6") || rank.equals("7") || rank.equals("8") ||
+      rank.equals("9") || rank.equals("T") || rank.equals("J") || rank.equals("Q") || rank.equals("K") || rank.equals("A")) && !(suit.equals("C") || suit.equals("H") ||
+      suit.equals("D") || suit.equals("S"))) {
+        System.out.println("\nThat's not a valid rank or a valid suit.");
+      }
+      else if(!(rank.equals("2") || rank.equals("3") || rank.equals("4") || rank.equals("5") || rank.equals("6") || rank.equals("7") || rank.equals("8") || rank.equals("9") ||
+      rank.equals("T") || rank.equals("J") || rank.equals("Q") || rank.equals("K") || rank.equals("A"))) {
+        System.out.println("\nThat's not a valid rank.");
+      }
+      else if(!(suit.equals("C") || suit.equals("H") || suit.equals("D") || suit.equals("S"))) {
+        System.out.println("\nThat's not a valid suit.");
+      }
+      }
+    
 
     /*
      * Exercise 7.
@@ -167,6 +354,19 @@ boolean tf;
 
     public void leapYear() {
 
+        String yesno = "";
+
+          System.out.print("\nEnter a year: ");
+          int leapyear = in.nextInt();
+
+          if (leapyear % 4 == 0 && (leapyear % 100 != 0 | leapyear % 400 == 0)) {
+            yesno = " is ";
+          }
+          else {
+            yesno = " is not ";
+          }
+
+          System.out.println("\n" + leapyear + yesno + "a leap year.");
     }
 
     /*
@@ -178,6 +378,53 @@ boolean tf;
 
     public void state() {
 
+      final double FAHRFREEZE = 32;
+      final double FAHRBOIL = 212;
+      final double CELSFREEZE = 0;
+      final double CELSBOIL = 100;
+
+      System.out.print("\nEnter a temperature: ");
+      double temperature = in.nextDouble();
+
+      System.out.print("Enter a scale: ");
+      in.nextLine();
+      String scale = in.nextLine();
+      scale = scale.toUpperCase();
+      String state = "";
+
+
+      if (scale.equals("F") || scale.equals("C")) {
+
+        if (scale.equals("F")) {
+
+          if (temperature <= FAHRFREEZE) {
+            state = "Solid.";
+          }
+          else if (temperature > FAHRFREEZE && temperature < FAHRBOIL) {
+            state = "Liquid.";
+          }
+          else if (temperature >= FAHRBOIL) {
+            state = "Gas.";
+          }
+        }
+
+        else if (scale.equals("C")) {
+          if (temperature <= CELSFREEZE) {
+            state = "Solid.";
+          }
+          else if (temperature > CELSFREEZE && temperature < CELSBOIL) {
+            state = "Liquid.";
+          }
+          else if (temperature >= CELSBOIL) {
+            state = "Gas.";
+          }
+        }
+
+        System.out.println("\n" + state);
+      }
+      else {
+        System.out.println("\nThat's not a valid scale.");
+      }
     }
 
     /*
@@ -188,6 +435,49 @@ boolean tf;
 
     public void months() {
 
+      System.out.print("\nEnter a month: ");
+      String month = in.nextLine();
+      month = month.toLowerCase();
+
+      if (month.equals("jan") || month.equals("janu") || month.equals("january")) {
+        System.out.println("\n31 days.");
+      }
+      else if (month.equals("feb") || month.equals("febr") || month.equals("february")) {
+        System.out.println("\n28 or 29 days.");
+      }
+      else if (month.equals("mar") || month.equals("marc") || month.equals("march")) {
+        System.out.println("\n31 days.");
+      }
+      else if (month.equals("apr") || month.equals("apri") || month.equals("april")) {
+        System.out.println("\n30 days.");
+      }
+      else if (month.equals("may")) {
+        System.out.println("\n31 days.");
+      }
+      else if (month.equals("jun") || month.equals("june")) {
+        System.out.println("\n30 days.");
+      }
+      else if (month.equals("jul") || month.equals("july")) {
+        System.out.println("\n31 days.");
+      }
+      else if (month.equals("aug") || month.equals("augu") || month.equals("august")) {
+        System.out.println("\n31 days.");
+      }
+      else if (month.equals("sep") || month.equals("sept") || month.equals("september")) {
+        System.out.println("\n30 days.");
+      }
+      else if (month.equals("oct") || month.equals("octo") || month.equals("october")) {
+        System.out.println("\n31 days.");
+      }
+      else if (month.equals("nov") || month.equals("nove") || month.equals("november")) {
+        System.out.println("\n30 days.");
+      }
+      else if (month.equals("dec") || month.equals("dece") || month.equals("december")) {
+        System.out.println("\n31 days.");
+      }
+      else {
+        System.out.println("\nThat's not a valid month.");
+      }
     }
 
     /*
@@ -198,5 +488,40 @@ boolean tf;
 
     public void salary() {
 
+          double paymulti = 1.5;
+
+          double ot = 0;
+
+          System.out.print("\nWage: ");
+          double wage = in.nextDouble();
+
+          System.out.print("Hours: ");
+          double hours = in.nextDouble();
+
+          double otwage = paymulti * wage;
+
+          if (wage >= 0 && hours >= 0) {
+
+            if (hours > 40) {
+              double otHours = hours - 40;
+              hours = 40;
+              ot = otHours * otwage;
+            }
+
+            double salary = wage * hours;
+            salary += ot;
+            System.out.printf("\nYou'll make $%,.2f this week.\n", salary);
+          }
+
+          else if (wage < 0 && hours < 0) {
+            System.out.println("\nYour wage must be greater than or equal to $0.00/hour and your hours must be greater than or equal to 0.0.");
+          }
+          else if (wage < 0) {
+            System.out.println("\nYour wage must be greater than or equal to $0.00/hour.");
+          }
+          else if (hours < 0) {
+            System.out.println("\nYour hours must be greater than or equal to 0.0.");
+          }
     }
+
 }
